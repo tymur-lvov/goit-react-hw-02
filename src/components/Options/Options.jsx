@@ -9,7 +9,6 @@ function Options({
   updateFeedback,
   totalFeedback,
 }) {
-  console.log(totalFeedback);
   return (
     <ul className={s.list}>
       <li>
