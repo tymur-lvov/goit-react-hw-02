@@ -14,7 +14,7 @@ function App() {
 
   const [state, setState] = useState(() => {
     const savedState = localStorage.getItem("feedbackState");
-    if (savedState !== 0) {
+    if (savedState !== null) {
       return JSON.parse(savedState);
     }
     return feedbackDefault;
@@ -22,9 +22,11 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("feedbackState", JSON.stringify(state));
-  });
+  }, [state]);
 
-  const totalFeedback = state.good + state.neutral + state.bad;
+  const savedState = localStorage.getItem("feedbackState");
+  const totalFeedback =
+    savedState !== null ? state.good + state.neutral + state.bad : 0;
 
   const updateFeedback = (feedbackType) => {
     setState((prevState) => ({
