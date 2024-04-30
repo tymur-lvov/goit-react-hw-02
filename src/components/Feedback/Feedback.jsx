@@ -1,4 +1,4 @@
-function Feedback({ state, totalFeedback }) {
+function Feedback({ state, totalFeedback, positivePercentage }) {
   const { good, neutral, bad } = state;
   return (
     <ul>
@@ -6,7 +6,7 @@ function Feedback({ state, totalFeedback }) {
       <li>Neutral: {neutral}</li>
       <li>Bad: {bad}</li>
       <li>Total: {totalFeedback}</li>
-      <li>Positive: {Math.round((good / totalFeedback) * 100)}%</li>
+      <li>Positive: {positivePercentage}%</li>
     </ul>
   );
 }

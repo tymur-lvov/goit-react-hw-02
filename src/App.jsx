@@ -28,10 +28,12 @@ function App() {
   const totalFeedback =
     savedState !== null ? state.good + state.neutral + state.bad : 0;
 
+  const positivePercentage = Math.round((state.good / totalFeedback) * 100);
+
   const updateFeedback = (feedbackType) => {
     setState((prevState) => ({
       ...prevState,
-      [feedbackType]: ++prevState[feedbackType],
+      [feedbackType]: prevState[feedbackType] + 1,
     }));
   };
 
@@ -55,7 +57,11 @@ function App() {
         totalFeedback={totalFeedback}
       />
       {totalFeedback ? (
-        <Feedback state={state} totalFeedback={totalFeedback} />
+        <Feedback
+          state={state}
+          totalFeedback={totalFeedback}
+          positivePercentage={positivePercentage}
+        />
       ) : (
         <Notification info="No feedback yet" />
       )}
