@@ -24,9 +24,7 @@ function App() {
     localStorage.setItem("feedbackState", JSON.stringify(state));
   }, [state]);
 
-  const savedState = localStorage.getItem("feedbackState");
-  const totalFeedback =
-    savedState !== null ? state.good + state.neutral + state.bad : 0;
+  const totalFeedback = state.good + state.neutral + state.bad;
 
   const positivePercentage = Math.round((state.good / totalFeedback) * 100);
 
